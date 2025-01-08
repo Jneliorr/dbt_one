@@ -1,0 +1,7 @@
+voltar para a dbt
+
+
+CMD
+dbt-env\Scripts
+activate
+dbt debug
