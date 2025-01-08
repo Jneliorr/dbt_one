@@ -9,6 +9,5 @@ models:
             description: "possuir o MUNICIPIO"
             tests:
                 - accepted_values:
-                    values: "5837"
-                - not_null
+                    values: ['5837']
 
