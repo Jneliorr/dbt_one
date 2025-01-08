@@ -69,3 +69,7 @@ models:
   dbt_one:  # Este nome deve corresponder ao nome do projeto
     cnpj:   # Nome do subdiretório dentro de "models"
       +materialized: table  # Configuração padrão para os modelos neste subdiretório
+models:
+  dbt_one:  # Este nome deve corresponder ao nome do projeto
+    teste:   # Nome do subdiretório dentro de "models"
+      +materialized: view  # Configuração padrão para os modelos neste subdiretório

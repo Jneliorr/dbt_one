@@ -1,0 +1,1 @@
+    SELECT * FROM `cnpj_rfb.empresa`
