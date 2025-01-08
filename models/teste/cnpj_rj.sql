@@ -1,5 +1,3 @@
--- {{ config(materialized='table') }}
-
 SELECT a.*,
     b.*
 EXCEPT(CNPJ_BASICO),
