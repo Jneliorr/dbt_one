@@ -1,0 +1,10 @@
+dbt_one:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: infra-itaborai # Substitua pelo ID do seu projeto no GCP
+      dataset: dbt_nelio # Nome do dataset no BigQuery
+      threads: 4
+      location: southamerica-east1 # Região do BigQuery (por exemplo: US, EU, etc.)
