@@ -1,10 +1,13 @@
 dbt_one:
-  target: dev
   outputs:
     dev:
-      type: bigquery
+      dataset: dbt_cnpj_rfb
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: southamerica-east1
       method: oauth
-      project: infra-itaborai # Substitua pelo ID do seu projeto no GCP
-      dataset: dbt_nelio # Nome do dataset no BigQuery
-      threads: 4
-      location: southamerica-east1 # Região do BigQuery (por exemplo: US, EU, etc.)
+      priority: interactive
+      project: infra-itaborai
+      threads: 6
+      type: bigquery
+  target: dev

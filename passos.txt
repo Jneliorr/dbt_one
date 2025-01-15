@@ -1,7 +1,22 @@
 voltar para a dbt
-
-
 CMD
 dbt-env\Scripts
 activate
 dbt debug
+
+
+#### 
+dbt run --models models/dbt_cnpj_rfb/cnpj_rj
+
+#### 
+FILTROS
+WHERE 
+  ('{{var("filtro_municipio")}}' = "" OR a.MUNICIPIO = '{{var("filtro_municipio")}}')
+  AND 
+  ('{{var("filtro_uf")}}' = "" OR a.UF = '{{var("filtro_uf")}}')    
+
+
+  ##
+  ADICIONANDO VARIAVES NA LINHA DE COMANDO
+
+  dbt run --models dbt_cnpj_rfb.cnpj_rj --vars '{"filtro_uf": "RJ"}'
