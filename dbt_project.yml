@@ -26,9 +26,9 @@ vars:
   filtro_municipio: ""
   filtro_uf: "RJ"
 
-# Configurações dos modelos
+#CONFIGURANDO MODELOS
 
 models:
   dbt_one:  # Este nome deve corresponder ao nome do projeto
     dbt_cnpj_rfb:   # Nome do subdiretório dentro de "models"
-      +materialized: table  # Configuração padrão para os modelos neste subdiretório dbt run --models models/teste
+      +materialized: table  # Configuração padrão para os modelos neste subdiretório dbt run --models models/teste view / table

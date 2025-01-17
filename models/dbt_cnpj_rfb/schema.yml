@@ -1,0 +1,225 @@
+version: 2
+models:
+
+  - name: simples_nacional  # Nome do modelo (arquivo SQL)
+    description: "Tabela contendo informações sobre a opção pelo Simples Nacional e MEI para empresas."
+    columns:
+      - name: CNPJ_BASICO
+        description: "Número básico do CNPJ da empresa."
+        tests:
+          - not_null  # Garante que o valor não seja nulo
+          - unique    # Garante que os valores sejam únicos
+      - name: OPCAO_PELO_SIMPLES
+        description: "Indica se a empresa optou pelo Simples Nacional."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["S", "N", null]  # Valores válidos: Sim (S), Não (N) ou nulo
+      - name: DATA_OPCAO_SIMPLES
+        description: "Data em que a empresa optou pelo Simples Nacional."
+        tests:
+          - not_null
+      - name: DATA_EXCLUSAO_DO_SIMPLES
+        description: "Data em que a empresa foi excluída do Simples Nacional."
+        tests: []
+      - name: OPCAO_PELO_MEI
+        description: "Indica se a empresa optou pelo MEI."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["S", "N", null]  # Valores válidos: Sim (S), Não (N) ou nulo
+      - name: DATA_OPCAO_MEI
+        description: "Data em que a empresa optou pelo MEI."
+        tests: []
+      - name: DATA_EXCLUSAO_DO_MEI
+        description: "Data em que a empresa foi excluída do MEI."
+        tests: []
+
+  - name: estabelecimento  # Nome do modelo (arquivo SQL)
+    description: "Tabela contendo informações detalhadas sobre os estabelecimentos associados aos CNPJs."
+    columns:
+      - name: CNPJ_BASICO
+        description: "Número básico do CNPJ da empresa."
+        tests:
+          - not_null
+
+      - name: CNPJ_ORDEM
+        description: "Número sequencial do CNPJ da empresa."
+        tests:
+          - not_null
+
+      - name: CNPJ_DV
+        description: "Dígito verificador do CNPJ."
+        tests:
+          - not_null
+
+      - name: MATRIZ_FILIAL
+        description: "Indica se o estabelecimento é Matriz (1) ou Filial (2)."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["1", "2", null]
+
+      - name: NOME_FANTASIA
+        description: "Nome fantasia do estabelecimento."
+        tests: []
+
+      - name: SITUACAO_CADASTRAL
+        description: "Situação cadastral do estabelecimento."
+        tests:
+          - not_null
+
+      - name: DATA_SITUACAO_CADASTRAL
+        description: "Data de alteração da situação cadastral."
+        tests: []
+
+      - name: MOTIVO_SITUACAO
+        description: "Motivo da situação cadastral."
+        tests: []
+
+      - name: NOME_CIDADE_EXT
+        description: "Nome da cidade no exterior (se aplicável)."
+        tests: []
+
+      - name: PAIS
+        description: "Nome do país associado ao estabelecimento."
+        tests: []
+
+      - name: DATA_INICIO_ATIVIDADE
+        description: "Data de início das atividades do estabelecimento."
+        tests: []
+
+      - name: CNAE_PRINCIPAL
+        description: "Código CNAE principal do estabelecimento."
+        tests:
+          - not_null
+
+      - name: CNAE_SECUNDARIA
+        description: "Códigos CNAE secundários do estabelecimento."
+        tests: []
+
+      - name: TIPO_LOGRADDOURO
+        description: "Tipo de logradouro (Ex.: Rua, Avenida, etc.)."
+        tests: []
+
+      - name: LOGRADOURO
+        description: "Endereço do logradouro."
+        tests: []
+
+      - name: NUM
+        description: "Número do endereço do estabelecimento."
+        tests: []
+
+      - name: COMPLEMENTO
+        description: "Complemento do endereço do estabelecimento."
+        tests: []
+
+      - name: BAIRRO
+        description: "Bairro do estabelecimento."
+        tests: []
+
+      - name: CEP
+        description: "CEP do endereço do estabelecimento."
+        tests: []
+
+      - name: UF
+        description: "Unidade Federativa (estado) do estabelecimento."
+        tests:
+          - not_null
+
+      - name: MUNICIPIO
+        description: "Município do estabelecimento."
+        tests:
+          - not_null
+
+      - name: DDD1
+        description: "DDD do telefone principal."
+        tests: []
+
+      - name: TEL1
+        description: "Número do telefone principal."
+        tests: []
+
+      - name: DDD2
+        description: "DDD do segundo telefone."
+        tests: []
+
+      - name: TEL2
+        description: "Número do segundo telefone."
+        tests: []
+
+      - name: DDD_FAX
+        description: "DDD do fax."
+        tests: []
+
+      - name: TEL_FAX
+        description: "Número do fax."
+        tests: []
+
+      - name: E_MAIL
+        description: "E-mail do estabelecimento."
+        tests: []
+
+      - name: SITUACAO_ESPECIAL
+        description: "Situação especial do estabelecimento."
+        tests: []
+
+      - name: DATA_SIT_ESPECIAL
+        description: "Data de início da situação especial."
+        tests: []
+
+      - name: CNPJ_COMPLETO
+        description: "CNPJ completo do estabelecimento (CNPJ básico + ordem + DV)."
+        tests:
+          - not_null
+          - unique
+
+  - name: empresas  # Nome do modelo (arquivo SQL)
+    description: "Tabela contendo informações detalhadas sobre as empresas."
+    columns:
+      - name: CNPJ_BASICO
+        description: "Número básico do CNPJ da empresa."
+        tests:
+          - not_null
+      - name: RAZAO_SOCIAL
+        description: "Razão social da empresa."
+        tests: [] 
+
+      - name: COD_NATUREZA_JUR
+        description: "Código da natureza jurídica da empresa."
+        tests: []
+
+      - name: QUALIFICACAO_RESPONSAVEL
+        description: "Qualificação do responsável da empresa."
+        tests: []
+
+      - name: CAPITAL_SOCIAL
+        description: "Capital social da empresa."
+        tests: []
+
+      - name: COD_PORT_EMPRESA
+        description: "Código do portador da empresa."
+        tests: []
+
+      - name: ENT_RESPONSAVEL
+        description: "Entidade responsável pela empresa."
+        tests: []
+  - name: cnae  # Nome do modelo (arquivo SQL)
+    description: "Tabela contendo informações sobre o CNAE."
+    columns:
+      - name: cnae
+        data_type: integer
+        description: "Código CNAE."
+        tests:
+          - not_null
+      - name: descricao
+        description: "descricao do codigo CNAE."
+        data_type: text
+        tests:
+          - not_null
+      - name: tipo
+        description: "SE a cnae é comercio ou serviço ou industria."
+        data_type: text
+        tests:
+          - not_null
+      
