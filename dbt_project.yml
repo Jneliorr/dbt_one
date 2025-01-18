@@ -21,14 +21,22 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
-#VARIAVES
+# Variáveis configuráveis para o projeto
 vars:
-  filtro_municipio: ""
-  filtro_uf: "RJ"
+  filtro_municipio: ""       # Filtro para municípios
+  filtro_uf: "RJ"            # Filtro para estados
+  codrecp: "1010"            # Código do recp
+  municipio_dasn: "5837"       # Código do município para o DASN
+  # dataset_name: ""           # Nome do dataset (pode ser alterado via --vars)
 
-#CONFIGURANDO MODELOS
-
+# Configurações dos modelos
 models:
-  dbt_one:  # Este nome deve corresponder ao nome do projeto
-    dbt_cnpj_rfb:   # Nome do subdiretório dentro de "models"
-      +materialized: table  # Configuração padrão para os modelos neste subdiretório dbt run --models models/teste view / table
+  dbt_one:                   # Este nome deve corresponder ao nome do projeto
+  
+    dbt_cnpj_rfb:            # Nome do subdiretório dentro de "models/dbt_cnpj_rfb"
+      +materialized: table   # Configuração padrão: os modelos serão materializados como tabelas
+      # +schema: "{{ var('dataset_name') }}" # Usa a variável dataset_name com padrão 'dbt_cnpj_rfb'
+    
+    dbt_dasn:                # Nome do subdiretório dentro de "models/dbt_dasn"
+      +materialized: view    # Configuração padrão: os modelos serão materializados como views
+      # +schema: "{{ var('dataset_name') }}"     # Usa a variável dataset_name com padrão 'dbt_dasn'
