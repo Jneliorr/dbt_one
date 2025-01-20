@@ -1,0 +1,41 @@
+version: 2
+models:
+
+
+  - name: cnpj_filtro_municipio  # Nome do modelo (arquivo SQL)
+    description: "Tabela contendo os as id_pgdas por filtro de municipio via cod_tom."
+    columns:
+      - name: id_pgdas
+        description: "id da pgdas filtradas por municipio."
+  - name: cnpj_pgdas  # Nome do modelo (arquivo SQL)
+    description: "Tabela contendo os todas as id_pgdas dos municipios."
+    columns:
+      - name: id_pgdas
+        description: "id da pgdas"
+      - name: Cod_TOM
+        description: "codigo municpial."
+
+
+  - name: perfil_das
+    description: "View com dados detalhados do DAS, incluindo valores e codigos de receita."
+    columns:
+      - name: REG
+        description: "Texto fixo contendo '01100'"
+        tests:
+          - not_null
+      - name: codrecp
+        description: "Código de receita do principal"
+      - name: valorprinc
+        description: "Valor do principal"
+      - name: codrecm
+        description: "Código de receita da multa"
+      - name: valorm
+        description: "Valor da multa"
+      - name: codrecj
+        description: "Código de receita dos juros"
+      - name: valorj
+        description: "Valor dos juros"
+      - name: uf
+        description: "UF no caso de ICMS"
+      - name: codmunic
+        description: "Código do município no caso de ISS"
